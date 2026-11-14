@@ -1,6 +1,6 @@
 # Sinterklescape – Specificatie
 
-Versie 0.2 · 14 november 2026 · status: concept
+Versie 0.3 · 14 november 2026 · status: gebouwd
 
 ## 1. Samenvatting
 
@@ -14,7 +14,7 @@ Sinterklescape is een webapp in de vorm van een escaperoom of speurtocht ter ere
 |---|---|
 | Spelers | 1 kind per iPad, zelfstandig. De ouder richt het spel in en helpt alleen af en toe. |
 | Leeftijd | 4–6 jaar, één niveau gericht op 5 jaar |
-| Platform | Primair iPad (Safari, en als app op het beginscherm), staand en liggend |
+| Platform | Primair iPad (Safari, en als app op het beginscherm), **liggend vast** (staand toont "draai je iPad") |
 | Stem | De ingebouwde spraak van de iPad (`speechSynthesis`, nl-NL) spreekt alle teksten uit. Er is geen leeswerk voor het kind. |
 | Opbouw | Een kaart met 6 plekken in vrije volgorde, plus een finale |
 | Duur | 2–3 uur per ronde: 6 plekken × 7 opdrachten × 3–4 minuten |
@@ -25,7 +25,7 @@ Sinterklescape is een webapp in de vorm van een escaperoom of speurtocht ter ere
 | Microfoon | Alleen volume ("Sint hoort je zingen"), niet wat er gezegd wordt |
 | Speeltijd | Geen limiet, de ouder bewaakt dat zelf |
 | Pieten | Roetveegpieten |
-| Beeld | Eigen SVG-illustraties, platte vrolijke prentenboekstijl, met de foto's van de familie erin verwerkt |
+| Beeld | Eigen SVG-illustraties voor personages, gebouwen en hoofdvoorwerpen (platte prentenboekstijl); kleine voorwerpen zijn emoji (op de iPad hoogwaardig en direct herkenbaar). Foto's van de familie worden erin verwerkt. |
 | Privacy | Alles (ook foto's) blijft lokaal op de iPad. Geen server, accounts, tracking, reclame of aankopen. |
 
 ## 3. Harde eisen voor elke opdracht
@@ -299,10 +299,15 @@ Elke plek heeft een voorraad van ongeveer 10 opdrachten; per ronde worden er 7 g
 
 Na M1 kan het kind al spelen. Nieuwe plekken "verschijnen" daarna op de kaart. De finale wordt pas mogelijk in M4. Tot die tijd zegt Sint bij 6 voorwerpen (of minder, zolang er nog plekken in aanbouw zijn): "Bijna! Nog even wachten op de rest."
 
-## 15. Open punten
+## 15. Besluiten na v0.2
 
-1. **Repo openbaar maken** voor GitHub Pages (moet de eigenaar zelf in de GitHub-instellingen doen).
-2. **Naam van het paard:** algemeen ("het paard van Sint") of een eigen naam?
-3. **Stem testen** op de iPads van de kinderen: hoe klinkt de Nederlandse stem? Zijn er verbeterde stemmen gedownload?
-4. **Rijmpjes** (T9) uitschrijven en laten goedkeuren.
-5. **Oriëntatie:** moet het spel overal zowel staand als liggend werken, of mag het liggend vastgezet worden (eenvoudiger en beter voor kaart en zoekplaten)?
+- **Paard:** heet Ozosnel (één constante in `js/data.js`, makkelijk aan te passen).
+- **Oriëntatie:** liggend vast.
+- **Voorraad:** 66 opdrachten, waarvan 6 extra-magie-kaartjes (één per plek; symbolen: stoomboot 🐟, pakhuis ⭐, bakkerij ❤️, stal 🌙, werkkamer 👑, pietenschool 🚀).
+- **Foto-opdrachten** gebruiken de systeemcamera (`<input capture>`), dat is op iPad betrouwbaarder dan een live-camerabeeld. QR-scannen gebruikt het live-camerabeeld met `jsQR`.
+- **Geluidseffecten** worden gesynthetiseerd (Web Audio), er zijn geen geluidsbestanden.
+
+## 16. Open punten
+
+1. Testen op een echte iPad met de echte kinderen: tempo, moeilijkheid, stemkwaliteit.
+2. Rijmpjes (T9) eventueel aanvullen of vervangen.
